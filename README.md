@@ -61,3 +61,6 @@ Requisição POST:curl -X POST "http://localhost:8080/movies/save?title={titulo_
 
 Para listar todos os filmes salvos:
 Requisição GET:curl -X GET "http://localhost:8080/movies/list"
+
+ver /sobre
+Requisição GET:curl -X GET "http://localhost:8080/sobre
