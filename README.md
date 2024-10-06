@@ -8,6 +8,7 @@ trabalho intermediario
 
 - Java 11 ou superior
 - Maven
+- necessario uso de postman ou insomnia
 
 O servidor estará disponível em http://localhost:8080.
 
