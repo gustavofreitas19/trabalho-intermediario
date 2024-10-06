@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,6 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    // Rota GET para buscar filme pelo título na API externa (OMDB)
     @GetMapping("/search")
     public ResponseEntity<Movie> getMovieByTitle(@RequestParam String title) {
         Movie movie = movieService.fetchMovieFromApi(title);
@@ -30,7 +30,6 @@ public class MovieController {
         }
     }
 
-    // Rota POST para salvar filme após obter da API externa
     @PostMapping("/save")
     public ResponseEntity<String> saveMovie(@RequestParam String title) {
         Movie movie = movieService.fetchMovieFromApi(title);
@@ -42,18 +41,21 @@ public class MovieController {
         }
     }
 
-    // Rota GET para listar todos os filmes salvos localmente
     @GetMapping("/list")
     public ResponseEntity<List<Movie>> listMovies() {
         List<Movie> movies = movieService.getAllMovies();
         return ResponseEntity.ok(movies);
     }
-    @GetMapping("/sobre")
-    public ResponseEntity<Map<String, String>> getSobre() {
-        Map<String, String> sobreInfo = new HashMap<>();
-        sobreInfo.put("estudante", "Gustavo De Freitas Cardoso");
-        sobreInfo.put("projeto", "Web-Service Busca de Filmes");
 
-        return ResponseEntity.ok(sobreInfo);
+    @RestController
+    public class sobrecontroller {
+        @GetMapping("/sobre")
+        public ResponseEntity<Map<String, String>> getSobre() {
+            Map<String, String> sobreInfo = new LinkedHashMap<>();
+            sobreInfo.put("estudante", "Gustavo De Freitas Cardoso");
+            sobreInfo.put("projeto", "Web-Service Busca de Filmes");
+
+            return ResponseEntity.ok(sobreInfo);
+        }
     }
 }
