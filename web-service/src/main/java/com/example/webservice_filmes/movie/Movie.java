@@ -5,7 +5,6 @@ public class Movie {
     private String year;
     private String plot;
 
-    // Construtores, getters e setters
     public Movie() {}
 
     public Movie(String title, String year, String plot) {
